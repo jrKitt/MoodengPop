@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Home() {
   const [isClicked, setIsClicked] = useState(false);
   const [score, setScore] = useState(0);
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [leaderboard, setLeaderboard] = useState<{ name: string; score: number }[]>([]);
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
