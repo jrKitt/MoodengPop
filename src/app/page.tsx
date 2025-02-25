@@ -12,10 +12,11 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
 
-  const fetchUserScore = async (username) => {
+  const fetchUserScore = async (username: string) => {
     try {
-      const { data } = await axios.get("/api/leaderboard");
-      const user = data.find((player) => player.name === username);
+      const { data }: { data: { name: string; score: number }[] } = await axios.get("/api/leaderboard");
+  
+      const user = data.find((player) => player.name === username); 
       if (user) {
         setScore(user.score);
       } else {
@@ -26,6 +27,8 @@ export default function Home() {
       setScore(0);
     }
   };
+  
+  
 
   const handleClick = async () => {
     if (!submitted) return alert("กรุณากรอกชื่อก่อนเล่น!");
